@@ -1,9 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Thiệp cưới điền tên</title>
+  
+  <!-- Google Font: Dancing Script -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+  
   <style>
     body {
       text-align: center;
@@ -20,18 +23,27 @@
     }
     .name-text {
       position: absolute;
-      top: 80px;
       width: 100%;
       text-align: center;
       font-size: 24px;
       color: #b30059;
-      font-family: 'Brush Script MT', cursive;
+      font-family: 'Dancing Script', cursive;
       font-weight: bold;
+      pointer-events: none; /* So it doesn't block input clicks */
+    }
+    #nameOverlay1 {
+      top: 80px; /* vertical position for first text */
+    }
+    #nameOverlay2 {
+      top: 130px; /* vertical position for second text */
+      font-size: 20px; /* slightly smaller font */
+      color: #8a0046; /* slightly different color */
     }
     input {
-      margin: 20px;
+      margin: 10px 20px;
       padding: 10px;
       font-size: 18px;
+      width: 300px;
     }
     button {
       padding: 10px 20px;
@@ -41,34 +53,46 @@
       border: none;
       cursor: pointer;
       border-radius: 8px;
+      margin-top: 10px;
     }
     canvas {
       display: none;
+    }
+    #previewImg {
+      margin-top: 20px;
+      max-width: 350px;
+      border: 2px solid #d63384;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
   <h2>Điền tên khách mời vào thiệp</h2>
-  <input type="text" id="guestName" placeholder="Nhập tên khách mời">
+  <input type="text" id="guestName1" placeholder="Nhập tên khách mời" />
+  <br />
+  <input type="text" id="guestName2" placeholder="Nhập dòng chữ thứ hai" />
+  <br />
   <button onclick="downloadImage()">Tải thiệp về</button>
 
   <div class="container">
-    <img id="invitation" src="invitation.png" alt="Wedding Invitation">
-    <div class="name-text" id="nameOverlay">Nguyễn Văn A</div>
+    <img id="invitation" src="invitation.png" alt="Wedding Invitation" />
+    <div class="name-text" id="nameOverlay1">Nguyễn Văn A</div>
+    <div class="name-text" id="nameOverlay2">Tháng 10 năm 2025</div>
   </div>
 
   <canvas id="canvas"></canvas>
+  
+  <img id="previewImg" alt="Preview of invitation will appear here" />
 
   <script>
-    const nameInput = document.getElementById('guestName');
-    const nameOverlay = document.getElementById('nameOverlay');
+    const nameInput1 = document.getElementById('guestName1');
+    const nameInput2 = document.getElementById('guestName2');
+    const nameOverlay1 = document.getElementById('nameOverlay1');
+    const nameOverlay2 = document.getElementById('nameOverlay2');
+    const previewImg = document.getElementById('previewImg');
 
-    nameInput.addEventListener('input', () => {
-      nameOverlay.textContent = nameInput.value || 'Nguyễn Văn A';
-    });
-
-    function downloadImage() {
+    function updatePreview() {
       const img = document.getElementById('invitation');
       const canvas = document.getElementById('canvas');
       const ctx = canvas.getContext('2d');
@@ -78,15 +102,34 @@
 
       ctx.drawImage(img, 0, 0);
 
-      const name = nameInput.value || 'Nguyễn Văn A';
-      ctx.font = "40px 'Brush Script MT', cursive";
+      const text1 = nameInput1.value || 'Nguyễn Văn A';
+      const text2 = nameInput2.value || 'Tháng 10 năm 2025';
+
+      nameOverlay1.textContent = text1;
+      nameOverlay2.textContent = text2;
+
+      ctx.font = "40px 'Dancing Script', cursive";
       ctx.fillStyle = "#b30059";
       ctx.textAlign = "center";
-      ctx.fillText(name, canvas.width / 2, 130);
+      ctx.fillText(text1, canvas.width / 2, 130);
 
+      ctx.font = "28px 'Dancing Script', cursive";
+      ctx.fillStyle = "#8a0046";
+      ctx.fillText(text2, canvas.width / 2, 180);
+      
+      const jpegUrl = canvas.toDataURL('image/jpeg', 0.9);
+      previewImg.src = jpegUrl;
+    }
+
+    nameInput1.addEventListener('input', updatePreview);
+    nameInput2.addEventListener('input', updatePreview);
+
+    window.onload = updatePreview;
+
+    function downloadImage() {
       const link = document.createElement('a');
-      link.download = 'thiep-moi.png';
-      link.href = canvas.toDataURL('image/png');
+      link.download = 'thiep-moi.jpg';
+      link.href = previewImg.src;
       link.click();
     }
   </script>
