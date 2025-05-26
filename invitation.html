@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thiệp cưới điền tên</title>
+  <style>
+    body {
+      text-align: center;
+      background-color: #fceef2;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .container {
+      position: relative;
+      display: inline-block;
+    }
+    #invitation {
+      width: 700px;
+      max-width: 100%;
+    }
+    .name-text {
+      position: absolute;
+      top: 80px;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: #b30059;
+      font-family: 'Brush Script MT', cursive;
+      font-weight: bold;
+    }
+    input {
+      margin: 20px;
+      padding: 10px;
+      font-size: 18px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #d63384;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Điền tên khách mời vào thiệp</h2>
+  <input type="text" id="guestName" placeholder="Nhập tên khách mời">
+  <button onclick="downloadImage()">Tải thiệp về</button>
+
+  <div class="container">
+    <img id="invitation" src="invitation.png" alt="Wedding Invitation">
+    <div class="name-text" id="nameOverlay">Nguyễn Văn A</div>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const nameInput = document.getElementById('guestName');
+    const nameOverlay = document.getElementById('nameOverlay');
+
+    nameInput.addEventListener('input', () => {
+      nameOverlay.textContent = nameInput.value || 'Nguyễn Văn A';
+    });
+
+    function downloadImage() {
+      const img = document.getElementById('invitation');
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+
+      ctx.drawImage(img, 0, 0);
+
+      const name = nameInput.value || 'Nguyễn Văn A';
+      ctx.font = "40px 'Brush Script MT', cursive";
+      ctx.fillStyle = "#b30059";
+      ctx.textAlign = "center";
+      ctx.fillText(name, canvas.width / 2, 130);
+
+      const link = document.createElement('a');
+      link.download = 'thiep-moi.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html>
