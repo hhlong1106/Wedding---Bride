@@ -32,10 +32,10 @@
       pointer-events: none; /* So it doesn't block input clicks */
     }
     #nameOverlay1 {
-      top: 50px; /* vertical position for first text */
+      top: 55px; /* vertical position for first text */
     }
     #nameOverlay2 {
-      top: 100px; /* vertical position for second text */
+      top: 90px; /* vertical position for second text */
       font-size: 20px; /* slightly smaller font */
       color: #8a0046; /* slightly different color */
     }
@@ -112,11 +112,11 @@
       ctx.font = "40px 'Dancing Script', cursive";
       ctx.fillStyle = "#b30059";
       ctx.textAlign = "center";
-      ctx.fillText(text1, canvas.width / 2, 210);
+      ctx.fillText(text1, canvas.width / 2, 220);
 
       ctx.font = "28px 'Dancing Script', cursive";
       ctx.fillStyle = "#8a0046";
-      ctx.fillText(text2, canvas.width / 2, 260);
+      ctx.fillText(text2, canvas.width / 2, 450);
       
       const jpegUrl = canvas.toDataURL('image/jpeg', 0.9);
       previewImg.src = jpegUrl;
