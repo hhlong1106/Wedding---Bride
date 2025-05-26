@@ -25,7 +25,7 @@
       position: absolute;
       width: 100%;
       text-align: center;
-      font-size: 24px;
+      font-size: 12px;
       color: #b30059;
       font-family: 'Dancing Script', cursive;
       font-weight: bold;
@@ -36,8 +36,8 @@
     }
     #nameOverlay2 {
       top: 95px; /* vertical position for second text */
-      font-size: 20px; /* slightly smaller font */
-      color: #8a0046; /* slightly different color */
+      font-size: 12px; /* slightly smaller font */
+      color: #b30059; /* slightly different color */
     }
     input {
       margin: 10px 20px;
@@ -116,7 +116,7 @@
 
       ctx.font = "28px 'Dancing Script', cursive";
       ctx.fillStyle = "#8a0046";
-      ctx.fillText(text2, canvas.width / 2, 320);
+      ctx.fillText(text2, canvas.width / 2, 330);
       
       const jpegUrl = canvas.toDataURL('image/jpeg', 0.9);
       previewImg.src = jpegUrl;
