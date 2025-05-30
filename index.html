@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Thiệp cưới điền tên</title>
 
-  <!-- Google Font: Pinyon Script -->
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap" rel="stylesheet" />
+  <!-- Google Font: Carattere -->
+  <link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet" />
 
   <style>
     body {
@@ -26,8 +26,8 @@
       width: 100%;
       text-align: center;
       font-size: 12px;
-      color: #000000; /* changed to black */
-      font-family: 'Pinyon Script', cursive;
+      color: #000000; /* Black text */
+      font-family: 'Carattere', cursive;
       font-weight: normal;
       pointer-events: none;
     }
@@ -37,7 +37,7 @@
     #nameOverlay2 {
       top: 102px;
       font-size: 12px;
-      color: #000000; /* changed to black */
+      color: #000000;
     }
     input {
       margin: 10px 20px;
@@ -107,12 +107,12 @@
       nameOverlay1.textContent = text1;
       nameOverlay2.textContent = text2;
 
-      ctx.font = "40px 'Pinyon Script', cursive";
+      ctx.font = "40px 'Carattere', cursive";
       ctx.fillStyle = "#000000"; // black
       ctx.textAlign = "center";
       ctx.fillText(text1, canvas.width / 2, 220);
 
-      ctx.font = "40px 'Pinyon Script', cursive";
+      ctx.font = "40px 'Carattere', cursive";
       ctx.fillStyle = "#000000"; // black
       ctx.fillText(text2, canvas.width / 2, 330);
 
