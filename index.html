@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Thiệp cưới điền tên</title>
-  
-  <!-- Google Font: Dancing Script -->
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
-  
+
+  <!-- Google Font: Imperial Script -->
+  <link href="https://fonts.googleapis.com/css2?family=Imperial+Script&display=swap" rel="stylesheet" />
+
   <style>
     body {
       text-align: center;
@@ -27,17 +27,17 @@
       text-align: center;
       font-size: 12px;
       color: #b30059;
-      font-family: 'Dancing Script', cursive;
-      font-weight: bold;
-      pointer-events: none; /* So it doesn't block input clicks */
+      font-family: 'Imperial Script', cursive;
+      font-weight: normal;
+      pointer-events: none;
     }
     #nameOverlay1 {
-      top: 65px; /* vertical position for first text */
+      top: 65px;
     }
     #nameOverlay2 {
-      top: 102px; /* vertical position for second text */
-      font-size: 12px; /* slightly smaller font */
-      color: #b30059; /* slightly different color */
+      top: 102px;
+      font-size: 12px;
+      color: #b30059;
     }
     input {
       margin: 10px 20px;
@@ -76,14 +76,12 @@
   <button onclick="downloadImage()">Tải thiệp về</button>
 
   <div class="container">
-    <!-- Changed src to invitation.jpg -->
     <img id="invitation" src="invitation.jpg" alt="Wedding Invitation" />
     <div class="name-text" id="nameOverlay1">Nguyễn Văn A</div>
     <div class="name-text" id="nameOverlay2">Tháng 10 năm 2025</div>
   </div>
 
   <canvas id="canvas"></canvas>
-  
   <img id="previewImg" alt="Preview of invitation will appear here" />
 
   <script>
@@ -109,15 +107,14 @@
       nameOverlay1.textContent = text1;
       nameOverlay2.textContent = text2;
 
-      ctx.font = "40px 'Dancing Script', cursive";
+      ctx.font = "40px 'Imperial Script', cursive";
       ctx.fillStyle = "#b30059";
       ctx.textAlign = "center";
       ctx.fillText(text1, canvas.width / 2, 220);
 
-      ctx.font = "40px 'Dancing Script', cursive";
-      ctx.fillStyle = "#b30059";
+      ctx.font = "40px 'Imperial Script', cursive";
       ctx.fillText(text2, canvas.width / 2, 330);
-      
+
       const jpegUrl = canvas.toDataURL('image/jpeg', 0.9);
       previewImg.src = jpegUrl;
     }
