@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <title>Thiệp cưới điền tên</title>
 
-  <!-- Google Font: Carattere -->
-  <link href="https://fonts.googleapis.com/css2?family=Carattere&display=swap" rel="stylesheet" />
+  <!-- Import Playwrite DK Loopet font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+DK+Loopet&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -26,9 +26,8 @@
       width: 100%;
       text-align: center;
       font-size: 12px;
-      color: #000000; /* Black text */
-      font-family: 'Carattere', cursive;
-      font-weight: normal;
+      color: black;
+      font-family: 'Playwrite DK Loopet', cursive;
       pointer-events: none;
     }
     #nameOverlay1 {
@@ -37,7 +36,7 @@
     #nameOverlay2 {
       top: 102px;
       font-size: 12px;
-      color: #000000;
+      color: black;
     }
     input {
       margin: 10px 20px;
@@ -82,6 +81,7 @@
   </div>
 
   <canvas id="canvas"></canvas>
+  
   <img id="previewImg" alt="Preview of invitation will appear here" />
 
   <script>
@@ -107,15 +107,15 @@
       nameOverlay1.textContent = text1;
       nameOverlay2.textContent = text2;
 
-      ctx.font = "40px 'Carattere', cursive";
-      ctx.fillStyle = "#000000"; // black
+      ctx.font = "40px 'Playwrite DK Loopet', cursive";
+      ctx.fillStyle = "black";
       ctx.textAlign = "center";
       ctx.fillText(text1, canvas.width / 2, 220);
 
-      ctx.font = "40px 'Carattere', cursive";
-      ctx.fillStyle = "#000000"; // black
+      ctx.font = "40px 'Playwrite DK Loopet', cursive";
+      ctx.fillStyle = "black";
       ctx.fillText(text2, canvas.width / 2, 330);
-
+      
       const jpegUrl = canvas.toDataURL('image/jpeg', 0.9);
       previewImg.src = jpegUrl;
     }
